@@ -1,0 +1,590 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Papers</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	opacity: 0.5;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif; }
+.mono { font-family: Nitti, 'Microsoft YaHei', '微软雅黑', monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, Nitti, 'Microsoft YaHei', '微软雅黑', monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="90e0aadf-c5b1-4945-85c8-77d927c9e365" class="page sans"><header><h1 class="page-title">Papers</h1><table class="properties"><tbody><tr class="property-row property-row-url"><th>Link</th><td></td></tr><tr class="property-row property-row-text"><th>Notes</th><td></td></tr><tr class="property-row property-row-multi_select"><th>Tags</th><td><span class="selected-value">Prethesis</span></td></tr><tr class="property-row property-row-last_edited_time"><th>Updated</th><td><time>@Nov 03, 2019 4:36 PM</time></td></tr></tbody></table></header><div class="page-body"><ul id="e16cc199-3607-43e6-9afc-7b24d46977d9" class="toggle"><li><details open=""><summary><strong>Six degrees : the science of a connected age</strong></summary><p id="95be1705-dcd4-482e-9925-0be49f5e149c" class=""><a href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph003498562&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any,contains,Six%20degrees%20:%20the%20science%20of%20a%20connected%20age**&amp;sortby=rank&amp;offset=0">NYU</a> , <a href="https://icr.ethz.ch/taicon/events/watts/slides.pdf">PPT</a></p><p id="ff786410-ea20-4e3b-8346-299994c53e22" class="">“Six degrees of separation between us and everyone else on this planet” – John Guare, 1990</p><ul id="69b79116-b16e-4fd2-b7c8-8038c3dfbbe3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Why do networks matter?</span></li></ul><p id="ab80582a-605b-4e35-87d1-6af9e42fb1a5" class=""><mark class="highlight-orange">An Example: Making Decisions.</mark></p><p id="c10a520b-d660-43b1-a272-eff90bcfb018" class="">In many scenarios, either
+–We don’t have enough information; or
+–We can’t process the information we do have
+–Often there is a premium on coordinated response
+(culture, conventions, coalitions, coups)
+-Sometimes we don’t even know what we want in the first place</p><p id="359b8eae-6d91-4be9-80eb-491230ba3beb" class="">Information Cascades
+When everyone is trying to make decisions based on the actions of others, collectives may fail to aggregate information
+Small fluctuations from equilibrium can lead to giant cascades
+–Bubbles and crashes the stock market
+–Fads and skewed distributions in cultural markets
+–Sudden explosions of social unrest (e.g. East Germany, Indonesia, Serbia)
+–Changes in previously stable social norms
+–“Celebrity effect” (someone who is famous principally for being well-known)</p></details></li></ul><ul id="992c79f8-3958-4161-a6a0-9d721b91f5fb" class="toggle"><li><details open=""><summary><strong>Accelerators in Silicon Valley : Building Successful Startups</strong></summary><figure id="c8cb8b8c-7b73-4d7a-bc4d-115899725800"><div class="bookmark source"><a href="https://ebookcentral-proquest-com.proxy.library.nyu.edu/lib/nyulibrary-ebooks/reader.action?docID=5219273&amp;query=">Shibboleth Authentication Request</a><br/><a class="bookmark-href" href="https://ebookcentral-proquest-com.proxy.library.nyu.edu/lib/nyulibrary-ebooks/reader.action?docID=5219273&amp;query=">https://ebookcentral-proquest-com.proxy.library.nyu.edu/lib/nyulibrary-ebooks/reader.action?docID=5219273&amp;query=</a></div></figure><p id="591930ff-0e57-4b66-9282-32675a372020" class="">Notes: Silicon Valley is the global paragon of innovation</p><p id="2984b145-ba0d-4211-a375-9fe9d07846c5" class="">Entrepreneurs:</p><p id="3301b38c-b3e8-4313-bd1e-6e47162097d6" class="">It is an amazing innovative economy filled with ambitious entrepreneurs who are mission-driven and positively obsessed with the aim of disrupting existing markets and mainstream technologies.</p><p id="58984fe2-7163-405a-a204-3907478c9e09" class="">Unlike in Europe, immigrant entrepreneurship flourishes in Silicon Valley: about half of all startups are founded by first generation immigrants, particularly from India and China. </p><p id="45764c7b-d842-4095-85d7-849348b0bfe6" class="">Venture capitals</p><p id="42d70b3f-4c6f-45ed-ba49-3f0a4fd445c1" class="">Accelerators help by bringing a startup&#x27;s product to the market, refining their business idea, developing their product, strengthening their team, designing a marketing strategy, attracting initial customers, and raising funds, all while coping with the unique hardships of the high-pressure startup life. Though short lived, accelerators act as a key behind-the-scenes early life support system. In Accelerators in Silicon Valley, Peter Ester explores in detail how these &quot;schools of startup entrepreneurship&quot; operate to empower startups, and thus bring success to themselves. Accelerators in Silicon Valley is a book for anyone who shares a fascination for building a successful startup in an ever-evolving economy.</p></details></li></ul><ul id="647e5114-9bf4-4c82-9c9a-151d7d729935" class="toggle"><li><details open=""><summary><strong>Incubators : a realist&#x27;s guide to the world&#x27;s new business accelerators</strong></summary><figure id="0a13c629-d552-48de-a757-4036b7dc7cd2"><div class="bookmark source"><a href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph000762544&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any"></a><br/><a class="bookmark-href" href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph000762544&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any">http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph000762544&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any</a></div></figure></details></li></ul><ul id="d8c30644-ae1b-4a47-a5a9-8c965ca1ea3c" class="toggle"><li><details open=""><summary><strong>The startup checklist : 25 steps to a scalable, high-growth business</strong></summary><p id="fa7e1639-24ab-4ffd-b174-5f5f0ccdd461" class=""><a href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph006263793&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any,contains,The%20startup%20checklist%20:%2025%20steps%20to%20a%20scalable,%20high-growth%20business">NYU</a></p><ul id="aeb53725-b913-4210-869a-b2a9b1cfa9e0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Chapter 8: Network Effectively Within the Entrepreneurial Ecosystem; Meetups; Business Plan Competitions; Startup Conferences and Launch Events; Accelerators and Demo Days; Angel Groups; Score.</span></li></ul></details></li></ul><ul id="e3a22e55-62f6-454e-9bb5-c1b771d49716" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Digital Startups in Transition Economies Challenges for Management, Entrepreneurship and Education</strong></mark></summary><p id="657d6e12-ce5b-482e-b48a-bb0a440e2f77" class="">
+</p></details></li></ul><ul id="7a183583-4845-4ea0-bdf9-e636e272ed48" class="toggle"><li><details open=""><summary><strong>All in startup : launching a new idea when everything is on the line</strong></summary><p id="467d637b-6580-4220-9132-545025c496d0" class=""><a href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph004176958&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any,contains,All%20in%20startup%20:%20launching%20a%20new%20idea%20when%20everything%20is%20on%20the%20line&amp;sortby=rank&amp;offset=0">NYU</a></p><ul id="3e711817-e88f-42e0-b32b-48f92bf4a801" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">You Won’t Find a Mentor if You Don’t Ask</span></li></ul><ul id="2138a0ff-d009-4c98-9b7a-cceb9adcd1a1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Test Your Assumptions before Committing Any Resources to an Idea</span></li></ul></details></li></ul><ul id="81ca78d2-ef5e-4183-a203-45308c150075" class="toggle"><li><details open=""><summary><strong>Startup communities : building an entrepreneurial ecosystem in your city</strong></summary><p id="b7c873c8-4bc3-4bbf-90dc-25ec1821ef2c" class=""><a href="http://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph004866328&amp;context=L&amp;vid=NYU&amp;lang=en_US&amp;search_scope=all&amp;adaptor=Local%20Search%20Engine&amp;tab=all&amp;query=any,contains,-%20**Startup%20communities%20:%20building%20an%20entrepreneurial%20ecosystem%20in%20your%20city**&amp;sortby=rank&amp;offset=0">NYU</a></p><p id="47dab1e8-e5b9-46d7-b55e-f4bccf092f84" class="">&#x27;Startup communities&#x27; are popping up everywhere. These types of entrepreneurial ecosystems are driving innovation and small business energy. </p><p id="3eef5bd3-df45-4528-85df-891914d6d9d2" class="">Startup Communities documents the buzz, strategy, long-term perspective, and dynamics of building communities of entrepreneurs who can feed off of each other&#x27;s talent, creativity, and support. </p><p id="925359bb-3669-4944-a484-10d451ab020d" class="">Based on more than twenty years of Boulder-based entrepreneur turned-venture capitalist Brad Feld&#x27;s experience in the field, as well as contributions from other innovative startup communities, this reliable resource skillfully explores what it takes to create an entrepreneurial community in any city, at any time. </p><p id="bd2dc21f-29a9-48cc-bcf0-437b34c9d5f3" class="">Along the way, it offers valuable insights into increasing the breadth and depth of the entrepreneurial ecosystem by multiplying connections among entrepreneurs and mentors, improving access to entrepreneurial education, and much more</p></details></li></ul><ul id="286869fa-7db3-4687-a05b-7284d385670b" class="toggle"><li><details open=""><summary><strong>The Power in a Link: Open Doors, Close Deals, and Change the Way You Do Business Using LinkedIn </strong></summary><figure id="939f9b32-d444-485c-b99d-1d2fa09cecd0"><div class="bookmark source"><a href="https://nyu.skillport.com/skillportfe/main.action#summary/BOOKS/RW$19964:_ss_book:45161"></a><br/><a class="bookmark-href" href="https://nyu.skillport.com/skillportfe/main.action#summary/BOOKS/RW$19964:_ss_book:45161">https://nyu.skillport.com/skillportfe/main.action#summary/BOOKS/RW$19964:_ss_book:45161</a></div></figure><p id="147c6d66-32c0-4152-a60a-d6ef2a751d4b" class="">Arguing that LinkedIn is <mark class="highlight-orange">not social media</mark> at all, but instead belongs in a category all of its own, the book cuts through the noise in the crowded social media world with practical applications and explains why all professionals should embrace it in order to achieve success faster through relationships.</p><p id="2e2a49c6-e076-41ab-b52d-c80af8fb5018" class="">This book shows readers how to seek targeted introductions to the connections that matter most.</p><p id="049944f1-e72a-4f75-a999-4101ef452196" class="">Wikipedia defines<strong> social capital</strong> as a sociological concept used in business, economics, organizational behavior, political science, public health, and the social sciences in general to refer to connections within and between social networks. <mark class="highlight-purple">As an evolution of these definitions, I define social capital as the intangible value Person A assigns to Person B when Person B requests a favor from Person A (an introduction, a recommendation, provision of business intelligence, and so on).</mark></p><p id="69de43de-7cfe-4af2-9b25-0d6d3710d7e1" class="">since he traded in social capital by essentially saying, &quot;John, by introducing you to Dave Gowel, I&#x27;m investing my <mark class="highlight-orange">time </mark>in making this introduction. I&#x27;m also<mark class="highlight-orange"> risking my personal brand </mark>in tying my name to the potential success (or lack thereof) of your overall experience with Dave.&quot;</p><p id="15021f6b-1cbd-4371-beaa-869d97787adc" class=""><mark class="highlight-purple">LinkedIn doesn&#x27;t obviate the need for human contact.</mark></p><p id="89bc678b-64ed-4deb-9feb-9184aa9e6ba0" class=""><mark class="highlight-orange">Follow up: </mark>If people invest their time to give you advice or guidance, follow up and let them know how you used that advice and make it clear that you were listening and executed thoughtful actions from their imparted wisdom.</p></details></li></ul><ul id="d3b6abf4-26d4-46ec-b48a-599255ee074a" class="toggle"><li><details open=""><summary><strong>A Modern Mentor Is a Listener, Too</strong></summary><figure id="80467aa9-08fd-49d9-b902-cc8388572d7d"><div class="bookmark source"><a href="https://www.nytimes.com/2010/06/06/jobs/06career.html">A Modern Mentor Is a Listener, Too</a><br/><a class="bookmark-href" href="https://www.nytimes.com/2010/06/06/jobs/06career.html">https://www.nytimes.com/2010/06/06/jobs/06career.html</a></div></figure><p id="ea927ef0-4cdf-47fd-a6fc-6f8c904bed0f" class="">Not everyone with experience or power in an organization makes<mark class="highlight-orange"><strong> a good mentor</strong></mark>. People who are very egotistical, love to hear themselves talk or seem to have no spare time are probably not good choices.</p><p id="db96b4d9-e6cb-4669-9f8c-33d1c9a957a2" class=""><strong>Q: What are your responsibilities as a protégé, and what can you expect of your mentor?</strong></p><p id="b0f52ec6-1656-4770-86eb-16568ed20975" class="">A good mentor sets parameters at the start. Include when, where and how often you will meet, and whether you will take notes.</p><p id="5a4b61fb-d3d9-43ed-ba45-97c0e22df273" class="">Then prepare for the sessions. Set up an agenda and be ready to ask questions and to describe your work since the last session.</p><p id="9fac7a34-bad5-4243-a33e-8af5fe687461" class="">Founder: You need to consider his advice, but ultimately you have to decide what you want to do.</p><p id="bc1fc9bc-4dbb-406b-8b63-fe8a2b3a8fd6" class="">Mentoring is different from couching: more holistic.</p><p id="f02c12d4-5202-4f02-963a-1ff42d9c714a" class="">Q<strong>. Why would people agree to spend time and energy mentoring? What’s in it for them?</strong></p><p id="743968b6-9ff7-4519-b83e-6d7d21c34d4e" class="">For one thing, it’s good professional <mark class="highlight-orange"><strong>karma</strong></mark> to help others, although there are other, more concrete benefits. Mentoring someone younger offers valuable insight into a generation of up-and-coming professionals. It also allows the protégé to share her own expertise — maybe teaching her mentor about a new software program or discussing concepts she recently studied in business school.</p><p id="774d2601-7154-41d1-a091-9849fcb90d8b" class=""><strong>Senior people are interested in their </strong><strong><mark class="highlight-orange">legacy</mark></strong><strong>.</strong> These are people who have spent decades in a particular industry and are now in a position to help shape what the future will look like, both within their organization and in the industry. That can be a very rewarding experience.</p></details></li></ul><ul id="0197bc67-cb52-4cc8-9378-b4aa63e39cbe" class="toggle"><li><details open=""><summary><strong>Elderly entrepreneurs</strong></summary><figure id="50be418a-ddf7-470c-b38e-295b646c031d"><div class="bookmark source"><a href="https://qz.com/1490044/older-workers-are-the-economys-most-underrated-natural-resource/">Older workers are the economy&#x27;s most underrated natural resource</a><br/><a class="bookmark-href" href="https://qz.com/1490044/older-workers-are-the-economys-most-underrated-natural-resource/">https://qz.com/1490044/older-workers-are-the-economys-most-underrated-natural-resource/</a></div></figure><p id="7655ed0e-0368-4e69-be9c-8b711a1d1089" class="">Advantage: Older and bolder entrepreneurs bring a unique value proposition to the table. Their experience of knowing what works and what doesn’t brings a huge advantage over those who’ve spent little time testing new ideas. Instead of approaching new problems with old solutions, their wealth of work and life experience can help teams discover new ways to make unlikely connections between ideas and insights.</p></details></li></ul><ul id="9537ff79-82dc-4963-a909-801555d8c9a3" class="toggle"><li><details open=""><summary><a href="https://www.oecd.org/cfe/leed/SummaryReportSeminarYouthEntrepreneurshipRev.pdf"><strong>Supporting Youth in Entrepreneurship</strong></a></summary><p id="0ae2e323-a671-4747-a406-73cb3545f97c" class="">In developing training, coaching and mentoring for youth entrepreneurs it is important to
+develop approaches against the current context of youth in the economy and society. In
+training programmes there should be a focus on developing entrepreneurial mind-sets, which
+means changing attitudes. The knowledge required to be an entrepreneur is not only related
+to professional practice in running a business, but also to skills and attitudes, and to metaqualities (for example to reflect on self-knowledge). Approaches to learning in small firms
+have varied over time, and these need to be taken into account. Methods of training need to
+be varied and can range between traditional ways of informational transfer through to
+interaction with peers. Formal approaches may be complemented by tacit learning with peers
+and networks. Monitoring and evaluation is important to increase the effectiveness of
+programmes.</p><p id="9a111316-9659-4725-9256-e7f18cfd110b" class="">Entrepreneurial networks are important in supporting entrepreneurship as sources of
+motivation, ideas, information, advice, business partners, employees, and customers.
+Networks vary widely in their nature, from <strong>private networks (family and friends) </strong>through
+<strong>market networks (business collaborators) </strong>to <strong>identity-based networks (e.g. ethnic affiliation)</strong>, as well as in the strength of ties between actors. Youth faces challenges in joining networks due to <mark class="highlight-purple"><strong>lack of resources, and a lack of experience in entrepreneurship and the labour market </strong></mark>more generally. </p><p id="47af2151-6e70-4f9e-9f7d-1cca04336e56" class="">Specific challenges include making good links to the wider business community, balancing targeted network initiatives against competition between networks, and ensuring that network members have ownership of their network. Policy approaches include developing specific networks around disadvantaged groups; using networks as a vehicle for delivering training; building networks around a specific objective (for example business growth); and the development of virtual networks.</p></details></li></ul></div></article></body></html>
