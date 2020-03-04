@@ -4,7 +4,7 @@ var threshold = 20; //255 is white, 0 is black
 var aveX, aveY, video; //this is what we are trying to find
 var objectR =255, objectG = 255, objectB = 255, randomcolor;
 var debug = true;
-var ctx, capture, canvas, imgToy;
+var ctx, capture, canvas, imgToy, cat;
 var center;
 
 
@@ -18,6 +18,7 @@ function screenshot(){
 
 function preload(){
 	imgToy = loadImage('toy.png');
+	cat= loadImage('cat1.gif');
   }
 
 function setup() {
@@ -127,7 +128,9 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	// var r = Math.random()*50;
 	// ellipse(width-2*aveX,2*aveY, r, r);	
 	clear();
-	image(imgToy, width-2*aveX, 2*aveY, 120, 120);
+	image(cat, width/2-200, height-400, 400, 300);
+	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
+
 }
 
 function handleSendMessage(message) {
