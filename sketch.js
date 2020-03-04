@@ -127,7 +127,7 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	// var r = Math.random()*50;
 	// ellipse(width-2*aveX,2*aveY, r, r);	
 	clear();
-	image(imgToy, width-2*aveX, 2*aveY, 100, 100);
+	image(imgToy, width-2*aveX, 2*aveY, 120, 120);
 }
 
 function handleSendMessage(message) {
