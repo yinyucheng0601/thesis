@@ -7,7 +7,7 @@ var debug = true;
 var ctx, capture, canvas, imgToy, imgToy2, cat;
 var center;
 
-
+var prevImgToy1Msg = { aveX: 0, aveY: 0 }, prevImgToy2Msg = { aveX: 0, aveY: 0 };
 
 function screenshot(){
 	var dataUrl = canvas.toDataURL();
@@ -36,7 +36,6 @@ function setup() {
 }
 
 function draw() {
-
 
 	capture.loadPixels();
 
@@ -74,8 +73,6 @@ function draw() {
 
 	//image(capture, 0, 0);
 	//console.log(objectR,objectG,objectB);
-
-    console.log(1)
 
 	const msg = {
 		totalFoundPixels,
@@ -120,6 +117,8 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	// average location of pixels
 	aveX = sumX / totalFoundPixels;
 	aveY = sumY / totalFoundPixels;
+    prevImgToy1Msg = {aveX: aveX, aveY: aveY}
+
 	// rgbToHsv(objectR,objectG,objectB);
 	// //console.log(rgbToHsv(objectR,objectG,objectB));
 
@@ -129,28 +128,23 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	// var r = Math.random()*50;
 	// ellipse(width-2*aveX,2*aveY, r, r);
     clear();
-  //image(cat, width/2-200, height-400, 400, 300);
+    image(cat, width/2-200, height-400, 400, 300);
 	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
-
+	image(imgToy2, width-2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
 }
 
 function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
-	// average location of pixels
+
 	aveX = sumX / totalFoundPixels;
 	aveY = sumY / totalFoundPixels;
-	// rgbToHsv(objectR,objectG,objectB);
-	// //console.log(rgbToHsv(objectR,objectG,objectB));
+    prevImgToy2Msg = {aveX: aveX, aveY: aveY}
 
-	// //fill(objectR,objectG+10,objectB+10, Math.random() * 80);
-	// fill(objectR,objectG,objectB);
-	// noStroke()
-	// var r = Math.random()*50;
-	// ellipse(width-2*aveX,2*aveY, r, r);
-    clear();
-  //image(cat, width/2-200, height-400, 400, 300);
+	clear();
+    image(cat, width/2-200, height-400, 400, 300);
+	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
 	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
-
 }
+
 function handleSendMessage(message) {
 	sendMessage({ event: 'MESSAGE', msg: message })
 }
