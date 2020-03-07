@@ -4,19 +4,20 @@ var threshold = 20; //255 is white, 0 is black
 var aveX, aveY, video; //this is what we are trying to find
 var objectR =255, objectG = 255, objectB = 255, randomcolor;
 var debug = true;
-var ctx, capture, canvas, imgToy, imgToy2, cat;
+var ctx, capture, canvas, imgToy, cat;
 var center;
 
-var prevImgToy1Msg = { aveX: 0, aveY: 0 }, prevImgToy2Msg = { aveX: 0, aveY: 0 };
+
+
 
 function screenshot(){
+
 	var dataUrl = canvas.toDataURL();
 	window.open(dataUrl, "toDataURL() image");
 }
 
 function preload(){
 	imgToy = loadImage('toy.png');
-	imgToy2 = loadImage('toy.png');
 	cat= loadImage('cat1.gif');
   }
 
@@ -30,13 +31,14 @@ function setup() {
 	capture.hide();
 	frameRate(60);
 
-
+	
 	//randomcolor = "hsl(" + 360 * Math.random() + ',' + (25 + 70 * Math.random()) + '%,' + (85 + 10 * Math.random()) + '%)';
-
+	
 }
 
 function draw() {
-
+	
+	
 	capture.loadPixels();
 
 	var totalFoundPixels = 0; //we are going to find the average location of change pixes so
@@ -47,10 +49,10 @@ function draw() {
 	//enter into the classic nested for statements of computer vision
 	for (var row = 0; row < capture.height; row++) {
 		for (var col = 0; col < capture.width; col++) {
-			//the pixels file into the room long line you use this simple formula to find what row and column the sit in
+			//the pixels file into the room long line you use this simple formula to find what row and column the sit in 
 
 			var offset = (row * capture.width + col) * 4;
-			//pull out the same pixel from the current frame
+			//pull out the same pixel from the current frame 
 			var thisColor = capture.pixels[offset];
 
 			//pull out the individual colors for both pixels
@@ -70,10 +72,10 @@ function draw() {
 		}
 	}
 	capture.updatePixels();
-
-	//image(capture, 0, 0);
+  
+	//image(capture, 0, 0); 
 	//console.log(objectR,objectG,objectB);
-
+	
 	const msg = {
 		totalFoundPixels,
 		sumX,
@@ -84,38 +86,49 @@ function draw() {
 	}
 
 	if (totalFoundPixels > 0) {
-        handleDraw(msg)
-        sendMessage({ ...msg, event: 'DRAW' });
+		handleDraw(msg)
+		sendMessage({ ...msg, event: 'DRAW' });
 	}
 }
 
+function rgbToHsv(r, g, b) {
+	r /= 255, g /= 255, b /= 255;
+  
+	var max = Math.max(r, g, b), min = Math.min(r, g, b);
+	var h, s, v = max;
+  
+	var d = max - min;
+	s = max == 0 ? 0 : d / max;
+  
+	if (max == min) {
+	  h = 0; // achromatic
+	} else {
+	  switch (max) {
+		case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+		case g: h = (b - r) / d + 2; break;
+		case b: h = (r - g) / d + 4; break;
+	  }
+  
+	  h /= 6;
+	}
+  
+	return [ 100*h, 50*s, 100 , 60 ];
+  }
 
 function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
 	// average location of pixels
 	aveX = sumX / totalFoundPixels;
 	aveY = sumY / totalFoundPixels;
-    prevImgToy1Msg = {aveX: aveX, aveY: aveY}
-
+	// rgbToHsv(objectR,objectG,objectB);
 	// fill(objectR,objectG,objectB);
 	// noStroke()
 	// var r = Math.random()*50;
-	// ellipse(width-2*aveX,2*aveY, r, r);
-    clear();
-    image(cat, width/2-200, height-400, 400, 300);
+	// ellipse(width-2*aveX,2*aveY, r, r);	
+	
+	//clear();
+	image(cat, width/2-200, height-400, 400, 300);
 	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
-	image(imgToy2, width-2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
-}
 
-function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
-
-	aveX = sumX / totalFoundPixels;
-	aveY = sumY / totalFoundPixels;
-    prevImgToy2Msg = {aveX: aveX, aveY: aveY}
-
-	clear();
-    image(cat, width/2-200, height-400, 400, 300);
-	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
-	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
 }
 
 function handleSendMessage(message) {
