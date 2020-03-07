@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Thesis Project by Yucheng</title>
-  <link rel="stylesheet" href="main.css"> 
+  <link rel="stylesheet" href="main.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700,900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,13 +12,13 @@
     </div>
 
       <h1><b>Famlity Time: Play With Kitty</b></h1>
-    
+
       <div style="display: flex; width: 100%; margin-bottom: 8px; justify-content: center;text-align: left">
         <!-- <div><img src="cat1.gif" style="width: 100%; height: auto; max-width: 800px;"></div> -->
         <!-- <div style="text-align: -webkit-left;margin-left:12px; margin-top: 60px"><span> STEP 1. Find anything with a bright color.<br/>STEP 2. Hold it close to your Webcam and click on Capture Color.</span></div> -->
       </div>
-    
-    
+
+
       <div class="actions">
         <input type="text" placeholder="Input your ID" id="uid">
         <button id="call" onclick="connect(document.getElementById('uid').value)">Create</button>
@@ -31,20 +31,20 @@
       <br/>
     </div>
 
-        
-    <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button>
-    
 
-      
+    <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button>
+
+
+
     <div id="display"></div>
-   
+
   </div>
-  <div id="sketch"></div>  
+  <div id="sketch"></div>
   <div id="videos"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.0.4/peerjs.min.js"></script>
   <script src="./call-peer.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
   <script src="sketch.js"></script>
   <script>
 
@@ -71,7 +71,7 @@
       noStroke();
       ellipse(windowWidth/2,windowHeight/2-30,50,50)
     }
-    
+
     // Create an <video> element to play the video stream
     function playStream(stream) {
       // Handle incoming audio
@@ -79,20 +79,20 @@
         console.log("Initialize audio track...")
         var audio = document.createElement('audio')
         audio.autoplay = true
-        
+
         document.body.appendChild(audio)
         audio.srcObject = stream
-      } 
+      }
 
       // Handle incoming video
       if(stream.getVideoTracks().length) {
         console.log("Initialize video track...")
         var video = document.createElement('video')
         video.autoplay = true
-        
+
         document.getElementById('videos').appendChild(video)
         video.srcObject = stream
-      } 
+      }
     }
     function connect(id) {
     // initialize Peer.js real-time connection
@@ -103,11 +103,11 @@
       },
 
       // called on incoming data messages (every message)
-      
+
 
       function onData(message, peerId) {
         if (message && message.event === 'DRAW') {
-          handleDraw(message);
+          handleDraw2(message);
           //console.log(message);
         }
       },
@@ -118,7 +118,7 @@
         // stream is an instance of the MediaStream class
         // it contains both audio and video streaming tracks
         // Here's the documentation: https://developer.mozilla.org/en-US/docs/Web/API/MediaStream
-        
+
         if(peerId) {
           console.log("ON REMOTE STREAM", peerId, stream)
         } else {
