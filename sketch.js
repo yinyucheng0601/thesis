@@ -99,7 +99,7 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	// var r = Math.random()*50;
 	// ellipse(width-2*aveX,2*aveY, r, r);
     clear();
-    image(cat, width/2-200, height-400, 400, 300);
+    image(cat, width/2-200, height-400);
 	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
 	image(imgToy2, width-2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
 }
