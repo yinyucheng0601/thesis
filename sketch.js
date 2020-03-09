@@ -86,10 +86,10 @@ function draw() {
 
 class Mover{
     constructor() {
-      this.position = createVector(random(width),height);
-      this.velocity = createVector();
+      this.position = createVector(random(width),height-400);
+      this.velocity = createVector(); 
       this.acceleration = createVector();
-      this.topspeed = 30;
+      this.topspeed = 50;
     }
   
     update() {
@@ -97,7 +97,7 @@ class Mover{
       var mouse = createVector(mouseX,mouseY);
       this.acceleration = p5.Vector.sub(mouse,this.position);
       // Set magnitude of acceleration
-      this.acceleration.setMag(0.1);
+      this.acceleration.setMag(0.5);
   
       this.velocity.add(this.acceleration);
       this.velocity.limit(this.topspeed);
@@ -138,6 +138,8 @@ function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }
     prevImgToy2Msg = {aveX: aveX, aveY: aveY}
 
 	clear();
+	mover.update();
+	mover.display();
     //image(cat, width/2-200, 400, 400, 400);
 	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
 	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);

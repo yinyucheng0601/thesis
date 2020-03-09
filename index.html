@@ -7,32 +7,28 @@
 </head>
 <body>
   <div class="wrapper" id="intro">
-    <div style=" display: flex; justify-content: space-between;">
-      <div class="header">Yucheng@NYU IDM Thesis Project</div>
-    </div>
+    
+    <header>Yucheng@NYU IDM Thesis Project</header>
+    <div class="columns">
+      <div class="leftColumn">
+        <p>A web app that connects you with your faraway family and friends in a playful way</p>
+        <h1><b>The Family V. time</b></h1>
+        <div class="actions">
+            <input type="text" placeholder="What's your name?" id="uid">
+            <button id="call" onclick="connect(document.getElementById('uid').value)">Create</button>
+            <br/>
+        </div>
 
-      <h1><b>Famlity Time: Play With Kitty</b></h1>
+        <div class="actions">
+          <input type="text" placeholder="What's other player's name?" id="id">
+          <button id="call" onclick="callPeer(document.getElementById('id').value)">Call Peer</button>
+          <br/>
+        </div>
 
-      <div style="display: flex; width: 100%; margin-bottom: 8px; justify-content: center;text-align: left">
-        <div><img src="cat2.gif" style="width: 100%; height: auto; max-width: 800px;"></div>
+        <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button>
       </div>
-
-
-      <div class="actions">
-        <input type="text" placeholder="Input your ID" id="uid">
-        <button id="call" onclick="connect(document.getElementById('uid').value)">Create</button>
-        <br/>
+      <div class="rightColumn"><img src="landingImg.png" style="margin-top: 80px;"></div>
     </div>
-
-    <div class="actions">
-      <input type="text" placeholder="Input peer ID" id="id">
-      <button id="call" onclick="callPeer(document.getElementById('id').value)">Call Peer</button>
-      <br/>
-    </div>
-
-
-    <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button>
-
 
 
     <div id="display"></div>
