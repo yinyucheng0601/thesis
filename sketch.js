@@ -2,10 +2,10 @@
 // image variables
 var threshold = 20; //255 is white, 0 is black
 var aveX, aveY, video; //this is what we are trying to find
-var objectR =255, objectG = 255, objectB = 255, randomcolor;
+var objectR =255, objectG = 0, objectB = 0, randomcolor;
 var debug = true;
 var ctx, capture, canvas, imgToy, imgToy2, cat;
-var center;
+var center, mover;
 var prevImgToy1Msg = { aveX: 0, aveY: 0 }, prevImgToy2Msg = { aveX: 0, aveY: 0 };
 
 function screenshot(){
@@ -20,29 +20,25 @@ function preload(){
   }
 
 function setup() {
-	//background(255,255,255,50);
+	
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent('sketch');
+	//canvas.background(255);
 	//ctx = createGraphics(windowWidth, windowHeight);
 	// set up video things
 	capture = createCapture(VIDEO);
 	capture.hide();
 	frameRate(60);
 
-
-
-
+	mover = new Mover();
 }
 
 function draw() {
-
 	capture.loadPixels();
 
 	var totalFoundPixels = 0; //we are going to find the average location of change pixes so
 	var sumX = 0; //we will need the sum of all the x find, the sum of all the y find and the total finds
 	var sumY = 0;
-
-
 	//enter into the classic nested for statements of computer vision
 	for (var row = 0; row < capture.height; row++) {
 		for (var col = 0; col < capture.width; col++) {
@@ -88,18 +84,49 @@ function draw() {
 	}
 }
 
+class Mover{
+    constructor() {
+      this.position = createVector(random(width),height);
+      this.velocity = createVector();
+      this.acceleration = createVector();
+      this.topspeed = 30;
+    }
+  
+    update() {
+      // Compute a vector that points from position to mouse
+      var mouse = createVector(mouseX,mouseY);
+      this.acceleration = p5.Vector.sub(mouse,this.position);
+      // Set magnitude of acceleration
+      this.acceleration.setMag(0.1);
+  
+      this.velocity.add(this.acceleration);
+      this.velocity.limit(this.topspeed);
+      this.position.add(this.velocity);
+    }
+  
+    display() {
+      noStroke();
+      strokeWeight(2);
+      fill(0);
+      image(cat,this.position.x, this.position.y, 400, 400);
+    }
+  }
+
 
 function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
 	// average location of pixels
 	aveX = sumX / totalFoundPixels;
 	aveY = sumY / totalFoundPixels;
-    prevImgToy1Msg = {aveX: aveX, aveY: aveY}
+	prevImgToy1Msg = {aveX: aveX, aveY: aveY}
+	//console.log(aveX, aveY);
 	// fill(objectR,objectG,objectB);
 	// noStroke()
 	// var r = Math.random()*50;
 	// ellipse(width-2*aveX,2*aveY, r, r);
-    clear();
-    image(cat, width/2-200, height-400);
+	clear();
+	mover.update();
+	mover.display();
+	//image(cat, width/2-200, 400, 400, 400);
 	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
 	image(imgToy2, width-2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
 }
@@ -111,7 +138,7 @@ function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }
     prevImgToy2Msg = {aveX: aveX, aveY: aveY}
 
 	clear();
-    image(cat, width/2-200, height-400, 400, 300);
+    //image(cat, width/2-200, 400, 400, 400);
 	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
 	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
 }
