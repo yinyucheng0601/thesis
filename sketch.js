@@ -27,8 +27,9 @@ function setup() {
 	//ctx = createGraphics(windowWidth, windowHeight);
 	// set up video things
 	capture = createCapture(VIDEO);
+	capture.width(1080);
 	capture.hide();
-	frameRate(60);
+	frameRate(20);
 
 	mover = new Mover();
 }
@@ -40,8 +41,8 @@ function draw() {
 	var sumX = 0; //we will need the sum of all the x find, the sum of all the y find and the total finds
 	var sumY = 0;
 	//enter into the classic nested for statements of computer vision
-	for (var row = 0; row < capture.height; row++) {
-		for (var col = 0; col < capture.width; col++) {
+	for (var row = 0; row < capture.height; row+=2) {
+		for (var col = 0; col < capture.width; col+=2) {
 			//the pixels file into the room long line you use this simple formula to find what row and column the sit in
 
 			var offset = (row * capture.width + col) * 4;
