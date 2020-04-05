@@ -27,9 +27,8 @@ function setup() {
 	//ctx = createGraphics(windowWidth, windowHeight);
 	// set up video things
 	capture = createCapture(VIDEO);
-	capture.width(1080);
 	capture.hide();
-	frameRate(20);
+	frameRate(30);
 
 	mover = new Mover();
 }
@@ -128,8 +127,8 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	mover.update();
 	mover.display();
 	//image(cat, width/2-200, 400, 400, 400);
-	image(imgToy, width-2*aveX, 2*aveY, 200, 200);
-	image(imgToy2, width-2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
+	image(imgToy, 2*aveX, 2*aveY, 200, 200);
+	image(imgToy2, 2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
 }
 
 function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
@@ -142,8 +141,8 @@ function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }
 	mover.update();
 	mover.display();
     //image(cat, width/2-200, 400, 400, 400);
-	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
-	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
+	image(imgToy, 2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
+	image(imgToy2, 2*aveX, 2*aveY, 200, 200);
 }
 
 function handleSendMessage(message) {

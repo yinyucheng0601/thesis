@@ -84,21 +84,16 @@ h1 {
 	margin:12px;
 }
 
-canvas {
-	position: absolute;
-	top:0px;
-	left: 0px;  
-	z-index: -2;
-  }
 
-video {
 
+ video {
+	
 	display:block;
 	width: 50%;
 	height: 100%;
 	object-fit: cover;
 	border-radius: 30px;
-} 
+  } 
 
 #sketch {
 	position: absolute;
@@ -107,15 +102,11 @@ video {
 	z-index: 1;
 }
 
-canvas {
-	position: absolute;
-	top:0px;
-	left: 0px;  
-	z-index: -2;
-  }
 
-
-≈
+#videos {
+	display:flex;
+	height: 100%;
+}
 
 input {
 	width: 200px;
@@ -167,3 +158,9 @@ button.btn1:hover {
 	color: white;
 }
 
+canvas {
+  position: absolute;
+  top:0px;
+  left: 0px;  
+  z-index: -2;
+}
