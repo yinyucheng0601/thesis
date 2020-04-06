@@ -141,8 +141,8 @@ function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }
 	mover.update();
 	mover.display();
     //image(cat, width/2-200, 400, 400, 400);
-	image(imgToy, 2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
-	image(imgToy2, 2*aveX, 2*aveY, 200, 200);
+	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
+	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
 }
 
 function handleSendMessage(message) {
