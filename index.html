@@ -3,7 +3,7 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -16,10 +16,13 @@
 
 <body>
 <div class="wrapper" id="intro">
-  
-  <p>Yucheng@NYU IDM Thesis Project</p>
-  <div class="columns">
-    <div class="leftColumn">
+  <div style="display:flex">
+  <p style="margin-right:24px">Yucheng@NYU IDM Thesis Project</p>
+  <a href="https://github.com/yinyucheng0601/thesis" style="margin-right:24px">Source Code</a>
+  <a href="https://www.linkedin.com/in/yinyucheng61/" style="margin-right:24px">About me</a>
+</div>
+  <div class="row">
+    <div class="col-sm">
       
       <h1><b>The Family V. time</b></h1>
       <p>A web app that connects you with your faraway family and friends in a playful way</p>
@@ -38,70 +41,87 @@
 
       <!-- <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button> -->
       <!-- <button class="btn1" id="start" onclick="popUp() ">Start Play</button> -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal0">
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal1">
         Start
       </button>
-      
     </div>
-    <div class="rightColumn"><img src="landingImg.png" style="margin-top: 80px;"></div>
+    <div class="col-sm"><img src="landingImg.png" width="100%" style="margin-top:50px"></div>
   </div>
-
-  <div id="display"></div>
 
 </div>
  
 <!-- Modal -->
-<div class="modal fade" id="Modal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- Step 1 Name -->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <!-- Step 1 Name -->
-    <div class="modal-content"  id="Modal1">
+    <div class="modal-content" >
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Hello there!</h5>
       </div>
       <div class="modal-body">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="What's your name?" id="uid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" >
+          <input type="text" required="true" class="form-control" placeholder="What's your name?" id="uid" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" >
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Modal2" id="Step1Next">Next</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- check connect function -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2" data-dismiss="modal" onclick="addElement(); connect(document.getElementById('uid').value)">Next</button>
       </div>
     </div>
-    <!-- Step 2 Instruction -->
+
+  </div>
+</div>
+
+<!-- Step 2 Instruction -->
+<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content"  id="Modal2">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">How to play</h5>
       </div>
       <div class="modal-body">
-       Target a color
+       How to play
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal3" id="Step2Next">Next</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1" data-dismiss="modal" onclick="clearVideos()">Previous</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal3" data-dismiss="modal" id="call" >Next</button>
       </div>
     </div>
-    <!-- Step 3 target color -->
-    <div class="modal-content"  id="Modal3">
+  </div>
+</div>
+
+<!-- Step 3 target color -->
+<div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+     <div id="popup3" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Connect to a friend</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Target a color</h5>
+
       </div>
       <div class="modal-body">
-        xxxx
+        Put an item in the center of video screen to capture its color. The color should be unique from the environment!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="Step3Next">Start Play!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="target">Target</button>
       </div>
       
     </div>
   </div>
 </div>
 
+<div id="aim"><img src="aim.svg"></div>
 
 
 <div id="sketch"></div>
 <div id="videos"></div>
+<div id="names"></div>
+<div id="hearts">
+  <div><img src="heart.svg" width="15" style="margin:1px"></div>
+  <div><img src="heart.svg" width="15" style="margin:1px"></div>
+  <div><img src="heart.svg" width="15" style="margin:1px"></div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.0.4/peerjs.min.js"></script>
 <script src="./call-peer.js"></script>
@@ -111,47 +131,62 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script>
+// to make sure only the last uid input gets displayed
+function clearVideos(){
+  var elmnt = document.getElementById('videos');
+  while (elmnt.firstChild) {
+    elmnt.removeChild(elmnt.firstChild);
+  }
+  document.getElementById('names').innerHTML = "";
+}
 
-// function popUp() {
-//   document.querySelector('.bgmodal').style.display = 'flex';
-// }
+// Add uid to the names div
+document.body.onload = addElement;
+function addElement() { 
+  var newContent = document.createTextNode(document.getElementById('uid').value); 
+  document.getElementById('names').appendChild(newContent);
+  // // create a new div element 
+  // var newDiv = document.createElement("div"); 
+  // newDiv.setAttribute("id", "name1");
+  // // and give it some content 
+  // var newContent = document.createTextNode(document.getElementById('uid').value); 
+  // // add the text node to the newly created div
+  // newDiv.appendChild(newContent);  
+  // newDiv.appendChild(newContent);
+  // // add the newly created element and its content into the DOM 
+  // var currentDiv = document.getElementById("aim"); 
+  // document.body.insertBefore(newDiv, currentDiv); 
+}
 
-document.querySelector('#Step1Next').addEventListener('click', function(){
-  document.querySelector('#Modal1').style.display = 'none';
+
+document.querySelector('#call').addEventListener('click', function(){
   $(".modal-backdrop").remove();
- })
+  document.querySelector('#sketch').style.display = 'block';
+  document.querySelector('#aim').style.display = 'block';
+  document.querySelector('#names').style.display = 'block';
+  document.querySelector('#hearts').style.display = 'flex';
+  document.querySelector('#videos').style.display = 'flex';
 
- document.querySelector('#Step2Next').addEventListener('click', function(){
-  document.querySelector('#Modal2').style.display = 'none';
-  $(".modal-backdrop").remove();
- })
-
- document.querySelector('#Step3Next').addEventListener('click', function(){
-  document.querySelector('#Modal0').style.display = 'none';
-  document.querySelector('#Modal1').style.display = 'none';
-  document.querySelector('#Modal2').style.display = 'none';
-  document.querySelector('#Modal3').style.display = 'none';
-  document.querySelector('#Modal2').style.display = 'none';
-  $(".modal-backdrop").remove();
- })
-
-
-  function myFunction() {
-
-    var intro= document.getElementById("intro")
+  var intro= document.getElementById("intro")
     if (intro.style.display === "none") {
       intro.style.display = "block";
     } else {
       intro.style.display = "none";
     }
+})
 
-    //setTimeout(function(){
-    center = capture.get(capture.width/2,capture.height/2);
-    objectR=center[0];
-    objectG=center[1];
-    objectB=center[2];
-
-  }
+document.querySelector('#target').addEventListener('click', function(){
+  //capture the center spot
+  center = capture.get(capture.width/2,capture.height/2);
+  objectR=center[0];
+  objectG=center[1];
+  objectB=center[2];
+  // console.log("objectR");
+  // colorMode(RGB);
+  // fill(objectR,objectG,objectB)
+  // noStroke();
+  // ellipse(windowWidth/2,windowHeight/2-30,50,50);
+})
 
   // Create an <video> element to play the video stream
   function playStream(stream) {
@@ -175,6 +210,7 @@ document.querySelector('#Step1Next').addEventListener('click', function(){
       video.srcObject = stream
     }
   }
+
   function connect(id) {
   // initialize Peer.js real-time connection
   initPeer(
@@ -195,6 +231,7 @@ document.querySelector('#Step1Next').addEventListener('click', function(){
 
     // called on incoming media stream connections (on connection)
     // for local media stream, peerId is `undefined`
+    
     function onMediaStream(stream, peerId) {
       // stream is an instance of the MediaStream class
       // it contains both audio and video streaming tracks

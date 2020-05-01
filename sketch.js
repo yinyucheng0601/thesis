@@ -20,7 +20,6 @@ function preload(){
   }
 
 function setup() {
-	
 	canvas = createCanvas(windowWidth, windowHeight);
 	canvas.parent('sketch');
 	//canvas.background(255);
@@ -29,13 +28,15 @@ function setup() {
 	capture = createCapture(VIDEO);
 	capture.hide();
 	frameRate(30);
-
 	mover = new Mover();
 }
 
 function draw() {
+	// textSize(32);
+	// fill(255);
+	// text(document.getElementById('uid').value, windowWidth/4, 100);
+	// console.log(document.getElementById('uid').value);
 	capture.loadPixels();
-
 	var totalFoundPixels = 0; //we are going to find the average location of change pixes so
 	var sumX = 0; //we will need the sum of all the x find, the sum of all the y find and the total finds
 	var sumY = 0;
