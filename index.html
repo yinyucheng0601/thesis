@@ -15,17 +15,18 @@
 </head>
 
 <body>
-<div class="wrapper" id="intro">
+<div class="wrapper " id="intro">
   <div style="display:flex">
   <p style="margin-right:24px">Yucheng@NYU IDM Thesis Project</p>
   <a href="https://github.com/yinyucheng0601/thesis" style="margin-right:24px">Source Code</a>
   <a href="https://www.linkedin.com/in/yinyucheng61/" style="margin-right:24px">About me</a>
 </div>
-  <div class="row">
+  <div class="row" id="wrapperRow">
     <div class="col-sm">
       
       <h1><b>The Family V. time</b></h1>
-      <p>A web app that connects you with your faraway family and friends in a playful way</p>
+      <p>A web app that connects you with your faraway family and friends in a playful way.</p>
+      <a href="https://youtu.be/y22Fcg_f9fg" style="margin-top:40px;margin-bottom:40px">How to play</a></br>
 
       <!-- <div class="actions">
           <input type="text" placeholder="What's your name?" id="uid">
@@ -41,7 +42,9 @@
 
       <!-- <button class="btn1" id="timer" onclick="myFunction() ">Start Play</button> -->
       <!-- <button class="btn1" id="start" onclick="popUp() ">Start Play</button> -->
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal1">
+      <audio id="audio" src="button.mp3"></audio>
+      <audio id="audio2" src="success.mp3"></audio>
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal1" onclick="document.getElementById('audio').play()" style="margin-top:40px"> 
         Start
       </button>
     </div>
@@ -66,7 +69,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <!-- check connect function -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2" data-dismiss="modal" onclick="addElement(); connect(document.getElementById('uid').value)">Next</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal2" data-dismiss="modal" onclick="addElement(); document.getElementById('audio').play(); connect(document.getElementById('uid').value)">Next</button>
       </div>
     </div>
 
@@ -74,18 +77,18 @@
 </div>
 
 <!-- Step 2 Instruction -->
-<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade bd-example-modal-lg" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content"  id="Modal2">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">How to play</h5>
+        <!-- <h5 class="modal-title" id="exampleModalCenterTitle">How to play</h5> -->
       </div>
       <div class="modal-body">
-       How to play
+        <div><iframe width="700" height="400"  src="https://www.youtube.com/embed/y22Fcg_f9fg?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Modal1" data-dismiss="modal" onclick="clearVideos()">Previous</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal3" data-dismiss="modal" id="call" >Next</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal3" data-dismiss="modal" id="call" onclick="document.getElementById('audio').play()">Next</button>
       </div>
     </div>
   </div>
@@ -103,24 +106,39 @@
         Put an item in the center of video screen to capture its color. The color should be unique from the environment!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="target">Target</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="document.getElementById('hint').style.display = 'block'">Done</button>
+        <button type="button" class="btn btn-primary" id="target" onclick="document.getElementById('audio2').play()">Target</button>
       </div>
       
     </div>
   </div>
 </div>
-
+<div id="hearts">
+  <!-- <div><img src="heart.svg" width="15" style="margin:1px"></div>
+  <div><img src="heart.svg" width="15" style="margin:1px"></div>
+  <div><img src="heart.svg" width="15" style="margin:1px"></div> -->
+</div>
 <div id="aim"><img src="aim.svg"></div>
-
-
 <div id="sketch"></div>
 <div id="videos"></div>
-<div id="names"></div>
-<div id="hearts">
-  <div><img src="heart.svg" width="15" style="margin:1px"></div>
-  <div><img src="heart.svg" width="15" style="margin:1px"></div>
-  <div><img src="heart.svg" width="15" style="margin:1px"></div>
+
+<div class="container-fluid" id="names">
+  <div class="row">
+    <div class="col-sm d-flex justify-content-center">
+      <div id="myName"></div>
+    </div>
+    <div class="col-sm d-flex justify-content-center" id="rightCol" >
+      <div id="playerName"></div></br>
+      <div id="hint">
+        <p>Connect to friends</p>
+        <input type="text" required="true" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Who are you gonna connect to?" id="id" style="margin-top:100px">
+        <button type="button" class="btn btn-primary" id="call" onclick="callPeer(document.getElementById('id').value)" style="margin:40px" onclick="document.getElementById('rightCol').style.display = 'none'">Connect</button>
+        <button type="button" class="btn btn-default" onclick="document.getElementById('hint').style.display = 'none'" onclick="addElement2()">close</button>
+
+      </div>
+    </div>
+      
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.0.4/peerjs.min.js"></script>
@@ -137,25 +155,19 @@ function clearVideos(){
   while (elmnt.firstChild) {
     elmnt.removeChild(elmnt.firstChild);
   }
-  document.getElementById('names').innerHTML = "";
+  document.getElementById('myName').innerHTML = "";
 }
 
 // Add uid to the names div
 document.body.onload = addElement;
 function addElement() { 
   var newContent = document.createTextNode(document.getElementById('uid').value); 
-  document.getElementById('names').appendChild(newContent);
-  // // create a new div element 
-  // var newDiv = document.createElement("div"); 
-  // newDiv.setAttribute("id", "name1");
-  // // and give it some content 
-  // var newContent = document.createTextNode(document.getElementById('uid').value); 
-  // // add the text node to the newly created div
-  // newDiv.appendChild(newContent);  
-  // newDiv.appendChild(newContent);
-  // // add the newly created element and its content into the DOM 
-  // var currentDiv = document.getElementById("aim"); 
-  // document.body.insertBefore(newDiv, currentDiv); 
+  document.getElementById('myName').appendChild(newContent);
+}
+
+function addElement2() { 
+  var newContent = document.createTextNode(document.getElementById('id').value); 
+  document.getElementById('playerName').appendChild(newContent);
 }
 
 
@@ -166,7 +178,7 @@ document.querySelector('#call').addEventListener('click', function(){
   document.querySelector('#names').style.display = 'block';
   document.querySelector('#hearts').style.display = 'flex';
   document.querySelector('#videos').style.display = 'flex';
-
+ 
   var intro= document.getElementById("intro")
     if (intro.style.display === "none") {
       intro.style.display = "block";
@@ -177,7 +189,7 @@ document.querySelector('#call').addEventListener('click', function(){
 
 document.querySelector('#target').addEventListener('click', function(){
   //capture the center spot
-  center = capture.get(capture.width/2,capture.height/2);
+  center = capture.get(capture.width/2, capture.height/2);
   objectR=center[0];
   objectG=center[1];
   objectB=center[2];

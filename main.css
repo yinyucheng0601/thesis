@@ -1,29 +1,24 @@
 
 
 html {
-	background-color:#6673FF;
 	height: 100%;
 	font-family: Futura, 'Montserrat', sans-serif;
 	font-size:14px;
 }
 
+head{
+	margin:0;
+	height:0;
+}
 
 body {
+	background-color:#A5ABF2;
+	top:0;
 	height: 100%;
-	padding:5%;
-	background-color:#6673FF;
-	text-align: center;
-	font-family: 'Montserrat', sans-serif;
-	color: #181818;	
+	margin: 0 auto;
 }
 
 
-.header {
-	text-align: left;
-	font-size: 13px;
-	color: #181818;
-	
-}
 
 a {
 	color: #625FF3;	
@@ -70,27 +65,26 @@ h3{
 .wrapper {
 	z-index: 100;
 	display: block; 
-	height:100%;
+	height:80%;
 	background-color: white;
 	border-radius: 30px;
-	margin:auto;
-
-	padding-top: 5%;
-	
+	margin: auto;
+	margin-top:5%;
+	padding-top: 3%;
 	padding-left:10%;
 	padding-right:10%;
 	text-align: left;
 
 	/* width:80%; */
-	max-width: 1080px;
-	-webkit-box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
-	-moz-box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
-	box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
-	box-shadow: 0px 0px 4px 0px rgba(98,95,243);
+	max-width: 1280px;
+	-webkit-box-shadow: 0px 0px 24px 0px rgba(98,95,243,0.2);
+	-moz-box-shadow: 0px 0px 24px 0px rgba(98,95,243,0.2);
+	box-shadow: 0px 0px 24px 0px rgba(98,95,243,0.2);
+	box-shadow: 0px 0px 8px 0px rgba(98,95,243,0.3);
 }
 
-.row{
-	height:100%;
+#wrapperRow{
+	margin-top: 6%;
 }
 
 #videos {
@@ -104,7 +98,8 @@ h3{
 }
  video {
 	display:block;
-	width: 50%;
+	width: 48%;
+	margin-right:2%;
 	height: 100%;
 	object-fit: cover;
 	border-radius: 30px;
@@ -154,39 +149,81 @@ canvas {
 	z-index: 999;
 }
 
-#hearts {
-	display: none;
-	position:absolute;
-	top:6%
-  }
-  .container > div {
-	flex: 1; /*grow*/
-  }
+ 
+
+.container-fluid {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+}
+
+.row{
+	height:100%;
+	padding:0;
+}
 
 #names {
+	margin:0;
 	display:none;
-	position: absolute;
-	width: 160px;
-	top:5%;
-	padding:10px;
-	/* background-color:white; */
-	left:-webkit-calc(25% - 80px);
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-	background-color:#625FF3;
+	/* position: absolute; */
+	/* left:-webkit-calc(25% - 80px); */
+	/* background-color:#625FF3;
 	border-radius: 100px;
 	color: white;
 	z-index: 998;
 	-webkit-box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
 	-moz-box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
 	box-shadow: 0px 0px 12px 0px rgba(98,95,243,0.56);
-	box-shadow: 0px 0px 4px 0px rgba(98,95,243);
+	box-shadow: 0px 0px 4px 0px rgba(98,95,243); */
+}
+
+
+#myName {
+	margin-top:8%;
+	width: 40%;
+	height: 60px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 15px 0;
+	background-color:#A5ABF2;
+	border-radius: 100px;
+	color: #625FF3;
+	z-index: 998;
+}
+
+
+
+#rightCol{
+	display:flex;
+	margin:2%;
+	/* background:rgba(255, 255, 255, 0.5); */
+	height:400px;
+	/* height:94%; */
+	padding:0;
+	border-radius: 100px;
+}
+
+#hint {
+	background:rgba(255, 255, 255, 0.5);
+	display:none;
+	margin-top:20px;
+	width: 80%;
+	padding-top:15px;
+	padding-left:40px;
+	padding-right:40px;
+	border-radius: 40px;
+	text-align: center;
+	font-size: 20px;
+	color: white;
+	z-index: 998;
+
 }
 
 #popup3{
 	position: absolute;
-	left:-webkit-calc(70%);
+	left:-webkit-calc(75%);
 	overflow: auto;
 	overflow-y: auto;
 }

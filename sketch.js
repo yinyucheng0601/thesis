@@ -16,7 +16,7 @@ function screenshot(){
 function preload(){
 	imgToy = loadImage('toy.png');
 	imgToy2 = loadImage('toy.png');
-	cat= loadImage('cat1.png');
+	cat= loadImage('cat.gif');
   }
 
 function setup() {
@@ -109,7 +109,7 @@ class Mover{
       noStroke();
       strokeWeight(2);
       fill(0);
-      image(cat,this.position.x, this.position.y, 400, 400);
+      image(cat,this.position.x, this.position.y, 300, 300);
     }
   }
 
@@ -129,7 +129,7 @@ function handleDraw({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG })
 	mover.display();
 	//image(cat, width/2-200, 400, 400, 400);
 	image(imgToy, 2*aveX, 2*aveY, 200, 200);
-	image(imgToy2, 2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 200, 200);
+	image(imgToy2, 2*prevImgToy2Msg.aveX, 2*prevImgToy2Msg.aveY, 150, 150);
 }
 
 function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }) {
@@ -142,7 +142,7 @@ function handleDraw2({ totalFoundPixels, sumX, sumY, objectR, objectB, objectG }
 	mover.update();
 	mover.display();
     //image(cat, width/2-200, 400, 400, 400);
-	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 200, 200);
+	image(imgToy, width-2*prevImgToy1Msg.aveX, 2*prevImgToy1Msg.aveY, 150, 150);
 	image(imgToy2, width-2*aveX, 2*aveY, 200, 200);
 }
 
