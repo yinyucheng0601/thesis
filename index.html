@@ -128,12 +128,12 @@
       <div id="myName"></div>
     </div>
     <div class="col-sm d-flex justify-content-center" id="rightCol" >
-      <div id="playerName"></div><br>
+      <!-- <div id="playerName"></div><br> -->
       <div id="hint">
         <p>Connect to friends</p>
         <input type="text" required="true" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="Who are you gonna connect to?" id="id" style="margin-top:100px">
         <button type="button" class="btn btn-primary" id="call" onclick="callPeer(document.getElementById('id').value)" style="margin:40px" onclick="document.getElementById('rightCol').style.display = 'none'">Connect</button>
-        <button type="button" class="btn btn-default" onclick="document.getElementById('hint').style.display = 'none'" onclick="addElement2()">close</button>
+        <button type="button" class="btn btn-default" onclick="document.getElementById('hint').style.display = 'none'" >close</button>
 
       </div>
     </div>
@@ -165,10 +165,10 @@ function addElement() {
   document.getElementById('myName').appendChild(newContent);
 }
 
-function addElement2() { 
-  var newContent = document.createTextNode(document.getElementById('id').value); 
-  document.getElementById('playerName').appendChild(newContent);
-}
+// function addElement2() { 
+//   var newContent = document.createTextNode(document.getElementById('id').value); 
+//   document.getElementById('playerName').appendChild(newContent);
+// }
 
 
 document.querySelector('#call').addEventListener('click', function(){
@@ -200,7 +200,7 @@ document.querySelector('#target').addEventListener('click', function(){
   // ellipse(windowWidth/2,windowHeight/2-30,50,50);
 })
 
-  // Create an <video> element to play the video stream
+  
   function playStream(stream) {
     // Handle incoming audio
     if(stream.getAudioTracks().length) {
@@ -212,6 +212,7 @@ document.querySelector('#target').addEventListener('click', function(){
       audio.srcObject = stream
     }
 
+    // Create an <video> element to play the video stream
     // Handle incoming video
     if(stream.getVideoTracks().length) {
       console.log("Initialize video track...")
